@@ -1,0 +1,91 @@
+{
+  "publisher": "adokevin",
+  "name": "v-jump",
+  "displayName": "v-jump",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.6.0",
+  "description": "",
+  "author": "Kevin Law <kevinlaw1024@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/adokevin",
+  "homepage": "https://github.com/adokevin/v-jump#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adokevin/v-jump"
+  },
+  "bugs": {
+    "url": "https://github.com/adokevin/v-jump/issues"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/adokevin"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/index.js",
+  "icon": "res/icon.png",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "vscode": "^1.78.1"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "nr build --watch --sourcemap",
+    "lint": "eslint .",
+    "vscode:prepublish": "nr build",
+    "publish": "vsce publish --no-dependencies",
+    "pack": "vsce package --no-dependencies",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && nr publish"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.16",
+    "@types/vscode": "^1.78.1",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "@vscode/vsce": "^2.19.0",
+    "bumpp": "^9.1.0",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.9.0",
+    "prettier": "^3.0.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.1.3",
+    "vite": "^4.2.3",
+    "vitest": "^0.31.4"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "v-jump.jumpToTemplate",
+        "title": "Jump to template"
+      },
+      {
+        "command": "v-jump.jumpToTemplateFocus",
+        "title": "Jump to template focus"
+      },
+      {
+        "command": "v-jump.jumpToScript",
+        "title": "Jump to script"
+      },
+      {
+        "command": "v-jump.jumpToScriptFocus",
+        "title": "Jump to script focus"
+      },
+      {
+        "command": "v-jump.jumpToStyle",
+        "title": "Jump to style"
+      },
+      {
+        "command": "v-jump.jumpToStyleFocus",
+        "title": "Jump to style focus"
+      }
+    ]
+  }
+}

@@ -23,7 +23,7 @@ export async function jumpTo(target: JumpType, textEditor: TextEditor, cache?: D
       if (position) {
         targetRange = new Range(position, position);
       } else {
-        findSymbolRange(textEditor, target);
+        targetRange = await findSymbolRange(textEditor, target);
       }
     }
 

@@ -1,15 +1,15 @@
 import {
+  Range,
+  TextEditorRevealType,
   commands,
   type DocumentSymbol,
-  Range,
   type TextEditor,
-  TextEditorRevealType,
 } from 'vscode';
-import { getSymbolType, JumpType, JumpTypeSymbolMap } from './jumpType';
 import type { DocumentFocusCache } from '.';
+import { JumpType, JumpTypeSymbolMap, getSymbolType, supportedLanguages } from './types';
 
 export async function jumpTo(target: JumpType, textEditor: TextEditor, cache?: DocumentFocusCache) {
-  if (textEditor.document.languageId === 'vue') {
+  if (supportedLanguages.some((s) => s === textEditor.document.languageId)) {
     let targetRange: Range | undefined;
 
     if (

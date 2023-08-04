@@ -8,7 +8,7 @@ import {
   type TextEditorSelectionChangeEvent,
 } from 'vscode';
 import { jumpTo } from './jump';
-import { JumpType, getSymbolType, type VueSymbolType } from './jumpType';
+import { JumpType, getSymbolType, supportedLanguages, type VueSymbolType } from './types';
 import { debounce } from './util';
 
 export type DocumentFocusCache = Map<VueSymbolType, Position>;
@@ -27,32 +27,34 @@ export function activate(context: ExtensionContext) {
 
   const debounceSelectionChangeHandler = debounce(async (event: TextEditorSelectionChangeEvent) => {
     const { textEditor, selections } = event;
-    const docId = textEditor.document.uri;
-    let documentCache = focusPositionCache.get(docId.toString());
+    if (supportedLanguages.some((l) => l === textEditor.document.languageId)) {
+      const docId = textEditor.document.uri;
+      let documentCache = focusPositionCache.get(docId.toString());
 
-    if (!documentCache) {
-      documentCache = new Map<VueSymbolType, Position>();
-      focusPositionCache.set(docId.toString(), documentCache);
-    }
-
-    const symbols = await commands.executeCommand<DocumentSymbol[]>(
-      'vscode.executeDocumentSymbolProvider',
-      textEditor.document.uri
-    );
-
-    selections.forEach((selection) => {
-      const cursor = selection.anchor;
-
-      const currentSymbol = symbols.find((f) => f.range.intersection(new Range(cursor, cursor)));
-
-      if (currentSymbol) {
-        const symbol = getSymbolType(currentSymbol);
-
-        if (symbol && documentCache) {
-          documentCache.set(symbol, cursor);
-        }
+      if (!documentCache) {
+        documentCache = new Map<VueSymbolType, Position>();
+        focusPositionCache.set(docId.toString(), documentCache);
       }
-    });
+
+      const symbols = await commands.executeCommand<DocumentSymbol[]>(
+        'vscode.executeDocumentSymbolProvider',
+        textEditor.document.uri
+      );
+
+      selections.forEach((selection) => {
+        const cursor = selection.anchor;
+
+        const currentSymbol = symbols.find((f) => f.range.intersection(new Range(cursor, cursor)));
+
+        if (currentSymbol) {
+          const symbol = getSymbolType(currentSymbol);
+
+          if (symbol && documentCache) {
+            documentCache.set(symbol, cursor);
+          }
+        }
+      });
+    }
   }, 300);
 
   window.onDidChangeTextEditorSelection(debounceSelectionChangeHandler);

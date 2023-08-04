@@ -27,3 +27,5 @@ export const JumpTypeSymbolMap = {
   [JumpType.StyleFocus]: VueSymbolType.Style,
   [JumpType.StyleStart]: VueSymbolType.Style,
 };
+
+export const supportedLanguages = ['vue', 'svelte'];

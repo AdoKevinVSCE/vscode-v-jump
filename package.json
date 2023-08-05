@@ -2,7 +2,7 @@
   "publisher": "KevinLaw",
   "name": "v-jump",
   "displayName": "V Jump",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "packageManager": "pnpm@8.6.0",
   "description": "Jump between **template** **script** and **style** in a single file component, and keep your working position",

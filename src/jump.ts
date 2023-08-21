@@ -1,5 +1,6 @@
 import {
   Range,
+  Selection,
   TextEditorRevealType,
   commands,
   type DocumentSymbol,
@@ -29,6 +30,7 @@ export async function jumpTo(target: JumpType, textEditor: TextEditor, cache?: D
 
     if (targetRange) {
       textEditor.revealRange(targetRange, TextEditorRevealType.InCenter);
+      textEditor.selection = new Selection(targetRange.start, targetRange.start);
     }
   }
 }

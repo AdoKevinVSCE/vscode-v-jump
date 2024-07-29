@@ -59,5 +59,3 @@ export function activate(context: ExtensionContext) {
 
   window.onDidChangeTextEditorSelection(debounceSelectionChangeHandler);
 }
-
-export function deactivate() {}

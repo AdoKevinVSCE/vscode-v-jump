@@ -4,7 +4,6 @@
   "displayName": "V Jump",
   "version": "1.0.2",
   "private": true,
-  "packageManager": "pnpm@8.6.0",
   "description": "Jump between **template** **script** and **style** in a single file component, and keep your working position",
   "author": "Kevin Law <kevinlaw1024@gmail.com>",
   "license": "MIT",
@@ -31,18 +30,17 @@
     "onStartupFinished"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --external vscode",
-    "dev": "nr build --watch --sourcemap",
+    "build": "tsup --minify --no-sourcemap",
+    "dev": "tsup --watch --sourcemap",
     "lint": "eslint .",
-    "vscode:prepublish": "nr build",
+    "vscode:prepublish": "pnpm run build",
     "publish": "vsce publish --no-dependencies",
     "pack": "vsce package --no-dependencies",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "release": "bumpp && nr publish"
+    "release": "pnpm run typecheck && pnpm run lint && pnpm run build && bumpp"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.21.5",
     "@types/node": "^18.16.16",
     "@types/vscode": "^1.78.1",
     "@typescript-eslint/eslint-plugin": "^6.2.1",

@@ -7,7 +7,7 @@ import {
   type TextDocument,
   type TextEditor,
 } from 'vscode';
-import { getSymbolType, JumpTypeSymbolMap, type JumpType, type Nullable } from './types';
+import { getSymbolType, memoScopeSymbolMap, type JumpType, type Nullable } from './types';
 
 export async function findInsertImportPosition(document: TextDocument, isVue: boolean) {
   let importPosition: Nullable<Position> = new Position(0, 0);
@@ -63,5 +63,5 @@ export async function findSymbolPosition(textEditor: TextEditor, target: JumpTyp
     'vscode.executeDocumentSymbolProvider',
     textEditor.document.uri
   );
-  return symbols.find((s) => getSymbolType(s) === JumpTypeSymbolMap[target])?.range?.start;
+  return symbols.find((s) => getSymbolType(s) === memoScopeSymbolMap[target])?.range?.start;
 }

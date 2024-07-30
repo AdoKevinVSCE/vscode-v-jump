@@ -1,19 +1,19 @@
 import { Position, Range, Selection, TextEditorRevealType, type TextEditor } from 'vscode';
-import type { DocumentFocusCache } from '.';
+import type { FocusScopeMemo } from '.';
 import { findInsertImportPosition, findSymbolPosition } from './positionHelper';
-import { JumpType, JumpTypeSymbolMap, type Nullable } from './types';
+import { JumpType, memoScopeSymbolMap, type Nullable } from './types';
 
-export async function jumpTo(target: JumpType, textEditor: TextEditor, cache?: DocumentFocusCache) {
+export async function jumpTo(jumpType: JumpType, textEditor: TextEditor, cache?: FocusScopeMemo) {
   let targetPosition: Nullable<Position>;
 
   if (textEditor.document.languageId === 'vue') {
     if (
-      target === JumpType.ScriptStart ||
-      target === JumpType.TemplateStart ||
-      target === JumpType.StyleStart
+      jumpType === JumpType.ScriptStart ||
+      jumpType === JumpType.TemplateStart ||
+      jumpType === JumpType.StyleStart
     ) {
-      targetPosition = await findSymbolPosition(textEditor, target);
-    } else if (target === JumpType.ScriptImports) {
+      targetPosition = await findSymbolPosition(textEditor, jumpType);
+    } else if (jumpType === JumpType.ScriptImports) {
       targetPosition = await findSymbolPosition(textEditor, JumpType.ScriptStart);
       if (targetPosition) {
         const position = await findInsertImportPosition(textEditor.document, true);
@@ -22,14 +22,16 @@ export async function jumpTo(target: JumpType, textEditor: TextEditor, cache?: D
         }
       }
     } else {
-      const position = cache?.get(JumpTypeSymbolMap[target]);
+      const position = memoScopeSymbolMap[jumpType]
+        ? cache?.get(memoScopeSymbolMap[jumpType])
+        : null;
       if (position) {
         targetPosition = position;
       } else {
-        targetPosition = await findSymbolPosition(textEditor, target);
+        targetPosition = await findSymbolPosition(textEditor, jumpType);
       }
     }
-  } else {
+  } else if (jumpType === JumpType.ScriptImports) {
     targetPosition = await findInsertImportPosition(textEditor.document, false);
   }
 

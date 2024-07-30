@@ -11,10 +11,10 @@ import { jumpTo } from './jump';
 import { JumpType, getSymbolType, memoScopeLanguages, type VueSymbolType } from './types';
 import { debounce } from './util';
 
-export type DocumentFocusCache = Map<VueSymbolType, Position>;
+export type FocusScopeMemo = Map<VueSymbolType, Position>;
 
 export function activate(context: ExtensionContext) {
-  const focusPositionCache = new Map<string, DocumentFocusCache>();
+  const focusPositionCache = new Map<string, FocusScopeMemo>();
 
   const disposables = Object.values(JumpType).map((type) =>
     commands.registerTextEditorCommand(type, (textEditor) => {

@@ -20,16 +20,12 @@ export function getSymbolType(symbol: DocumentSymbol) {
   return Object.values(VueSymbolType).find((v) => symbol.name.startsWith(v));
 }
 
-export const JumpTypeSymbolMap = {
+export const memoScopeSymbolMap: Partial<Record<JumpType, VueSymbolType>> = {
   [JumpType.ScriptFocus]: VueSymbolType.Script,
-  [JumpType.ScriptStart]: VueSymbolType.Script,
-  [JumpType.ScriptImports]: VueSymbolType.Script,
   [JumpType.TemplateFocus]: VueSymbolType.Template,
-  [JumpType.TemplateStart]: VueSymbolType.Template,
   [JumpType.StyleFocus]: VueSymbolType.Style,
-  [JumpType.StyleStart]: VueSymbolType.Style,
 };
 
-export const memoScopeLanguages = ['vue', 'svelte'];
+export const memoScopeLanguages = ['vue'];
 
 export type Nullable<T> = T | null | undefined;

@@ -3,3 +3,8 @@ node_modules
 test
 .github
 .vscode
+tsup.config.ts
+tsconfig.json
+.gitignore
+pnpm-*.yaml
+eslint.config.*

@@ -5,6 +5,7 @@ export enum JumpType {
   TemplateFocus = 'v-jump.jumpToTemplateFocus',
   ScriptStart = 'v-jump.jumpToScript',
   ScriptFocus = 'v-jump.jumpToScriptFocus',
+  ScriptImports = 'v-jump.jumpToScriptImports',
   StyleStart = 'v-jump.jumpToStyle',
   StyleFocus = 'v-jump.jumpToStyleFocus',
 }
@@ -22,10 +23,13 @@ export function getSymbolType(symbol: DocumentSymbol) {
 export const JumpTypeSymbolMap = {
   [JumpType.ScriptFocus]: VueSymbolType.Script,
   [JumpType.ScriptStart]: VueSymbolType.Script,
+  [JumpType.ScriptImports]: VueSymbolType.Script,
   [JumpType.TemplateFocus]: VueSymbolType.Template,
   [JumpType.TemplateStart]: VueSymbolType.Template,
   [JumpType.StyleFocus]: VueSymbolType.Style,
   [JumpType.StyleStart]: VueSymbolType.Style,
 };
 
-export const supportedLanguages = ['vue', 'svelte'];
+export const memoScopeLanguages = ['vue', 'svelte'];
+
+export type Nullable<T> = T | null | undefined;

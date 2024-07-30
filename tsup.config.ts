@@ -6,4 +6,5 @@ export default defineConfig({
   shims: false,
   dts: false,
   external: ['vscode'],
+  noExternal: [/^(?!.*vscode).*$/],
 });

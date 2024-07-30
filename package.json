@@ -4,7 +4,6 @@
   "displayName": "V Jump",
   "version": "1.0.2",
   "private": true,
-  "type": "module",
   "description": "Jump between **template** **script** and **style** in a single file component, and keep your working position",
   "author": "Kevin Law <kevinlaw1024@gmail.com>",
   "license": "MIT",
@@ -21,14 +20,16 @@
   ],
   "main": "./dist/index.js",
   "icon": "res/icon.png",
-  "files": [
-    "dist"
-  ],
   "engines": {
     "vscode": "^1.78.1"
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onLanguage:vue",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:vue-html"
   ],
   "scripts": {
     "build": "tsup --minify --no-sourcemap",
@@ -47,6 +48,7 @@
     "@types/node": "^18.16.16",
     "@types/vscode": "^1.78.1",
     "@vscode/vsce": "^2.19.0",
+    "@vue/compiler-dom": "^3.4.34",
     "bumpp": "^9.4.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
@@ -61,27 +63,31 @@
     "commands": [
       {
         "command": "v-jump.jumpToTemplate",
-        "title": "Jump to template"
+        "title": "V Jump: to template"
       },
       {
         "command": "v-jump.jumpToTemplateFocus",
-        "title": "Jump to template focus"
+        "title": "V Jump: to template focus"
       },
       {
         "command": "v-jump.jumpToScript",
-        "title": "Jump to script"
+        "title": "V Jump: to script"
       },
       {
         "command": "v-jump.jumpToScriptFocus",
-        "title": "Jump to script focus"
+        "title": "V Jump: to script focus"
+      },
+      {
+        "command": "v-jump.jumpToScriptImports",
+        "title": "V Jump: to script imports"
       },
       {
         "command": "v-jump.jumpToStyle",
-        "title": "Jump to style"
+        "title": "V Jump: to style"
       },
       {
         "command": "v-jump.jumpToStyleFocus",
-        "title": "Jump to style focus"
+        "title": "V Jump: to style focus"
       }
     ]
   }

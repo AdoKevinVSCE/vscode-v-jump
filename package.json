@@ -2,7 +2,7 @@
   "publisher": "KevinLaw",
   "name": "v-jump",
   "displayName": "V Jump",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "Jump between **template** **script** and **style** in a single file component, and keep your working position",
   "author": "Kevin Law <kevinlaw1024@gmail.com>",

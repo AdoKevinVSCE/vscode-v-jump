@@ -1,11 +1,11 @@
 # V Jump
 
-[![PRS Welcome](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/AdoKevin/vscode-v-jump/pulls)
-[![Stars Welcome](https://img.shields.io/badge/Stars%20Welcome-8A2BE2)](https://github.com/AdoKevin/vscode-v-jump)
+[![PRS Welcome](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/AdoKevinVSCE/vscode-v-jump/pulls)
+[![Stars Welcome](https://img.shields.io/badge/Stars%20Welcome-8A2BE2)](https://github.com/AdoKevinVSCE/vscode-v-jump)
 
 <p align="center">
-  <a href="https://github.com/adokevin/vscode-v-jump">
-    <img width="200" src="https://raw.githubusercontent.com/AdoKevin/vscode-v-jump/main/res/icon.png">
+  <a href="https://github.com/AdoKevinVSCE/vscode-v-jump">
+    <img width="200" src="https://raw.githubusercontent.com/AdoKevinVSCE/vscode-v-jump/main/res/icon-2x.png">
   </a>
 </p>
 

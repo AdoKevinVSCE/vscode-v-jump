@@ -14,12 +14,9 @@ export async function jumpTo(jumpType: JumpType, textEditor: TextEditor, cache?:
     ) {
       targetPosition = await findSymbolPosition(textEditor, jumpType);
     } else if (jumpType === JumpType.ScriptImports) {
-      targetPosition = await findSymbolPosition(textEditor, JumpType.ScriptStart);
-      if (targetPosition) {
-        const position = await findInsertImportPosition(textEditor.document, true);
-        if (position) {
-          targetPosition = new Position(position.line, 0);
-        }
+      const position = await findInsertImportPosition(textEditor.document, true);
+      if (position) {
+        targetPosition = new Position(position.line, 0);
       }
     } else {
       const position = memoScopeSymbolMap[jumpType]

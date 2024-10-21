@@ -46,4 +46,4 @@ We provide two types of quick navigation: Press the _F1_ key or _Ctrl + Shift + 
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [Kevin Law](https://github.com/adokevin)
+[MIT](./LICENSE) License © 2024 [Kevin Law](https://github.com/adokevin)

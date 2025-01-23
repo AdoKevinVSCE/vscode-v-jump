@@ -4,7 +4,7 @@
   "displayName": "V Jump",
   "version": "1.0.4",
   "private": true,
-  "description": "Jump between **template** **script** and **style** in a single file component, and keep your working position",
+  "description": "Jump between *FOCUS* positions of *template* *script* and *style* in a Vue SFC, keep your working position",
   "author": "Kevin Law <kevinlaw1024@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/AdoKevinVSCE/vscode-v-jump#readme",
@@ -47,17 +47,17 @@
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^18.16.16",
     "@types/vscode": "^1.78.1",
-    "@vscode/vsce": "^2.19.0",
+    "@vscode/vsce": "^3.2.1",
     "@vue/compiler-dom": "^3.4.34",
     "bumpp": "^9.4.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
-    "tsup": "^8.2.3",
+    "tsup": "^8.3.5",
     "typescript": "^5.5.4",
     "typescript-eslint": "^7.17.0",
-    "vite": "^5.3.5",
-    "vitest": "^2.0.4"
+    "vite": "^6.0.11",
+    "vitest": "^3.0.3"
   },
   "contributes": {
     "commands": [
@@ -90,5 +90,6 @@
         "title": "V Jump: to style focus"
       }
     ]
-  }
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }
